@@ -42,11 +42,13 @@ var Employee = function (firstName, lastName, phone, salary) {
 
 function showList() {
     var myTable = '<table class="table table-inverse" border="1"><tr><th>First Name</th><th>Last Name</th>'+
-        '<th>Phone</th><th>Salary</th></tr>';
+        '<th>Phone</th><th>Salary</th><th>Vizualizare</th></tr><th>Stergere</th>';
     for(var i in employeesList) {
         myTable += '<tr><td>' +employeesList[i].firstName+'</td><td>'
             +employeesList[i].lastName+'</td><td>'+employeesList[i].phone+
-            '</td><td>'+employeesList[i].salary+'</td></tr>';
+            '</td><td>'+employeesList[i].salary+'</td><td><button type="button" onclick="vizual('+i+')" '+
+            'class="btn btn-default">Vizualizare</button> </td>' +
+            '<td><button type="button" onclick="delete1('+i+')" class="btn btn-default">Stergere</button> </td></tr>';
     }
     myTable += '</table>';
     var container = document.getElementById('listcontainer');
@@ -72,7 +74,16 @@ function delLast() {
     employeesList.pop();
     showList();
 }
-
+function vizual(i) {
+    alert(employeesList[i].lastName);
+}
+function delete1(i) {
+    lungime = employeesList.length;
+    for(j = i; j < lungime - 1; j++) {
+        employeesList[j] = employeesList[j + 1];
+    }
+    employeesList.pop();
+}
 
 
 
