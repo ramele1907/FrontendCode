@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<div >
+    <select ng-change="changeColor()" ng-options="color.text group by color.type for color in colors track by color.text" ng-model="modelVar">
+        AAA
+    </select>
+    <span ng-class="modelVar.class">
+        <b>Some Text</b>
+    </span>
+</div>
+<div>
+    Input : <input type="input" ng-model="inputUsr">
+</div>
+<ul ng-repeat="color in colors | filter:inputUsr">
+    <li>
+        {{color.text}}
+    </li>
+</ul>
